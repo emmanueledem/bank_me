@@ -8,7 +8,7 @@ const BusyButton = ({ text, onPress, isActive = false }) => {
     <TouchableOpacity
       disabled={isActive}
       onPress={onPress}
-      style={styles.btnStyle}
+      style={[isActive ? styles.disabledBtnStyle : styles.btnStyle]}
     >
       <Text style={styles.btnTexStyle}> {text}</Text>
     </TouchableOpacity>
@@ -21,7 +21,6 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     height: 50,
     alignItems: "center",
-
     justifyContent: "center",
   },
 
@@ -30,6 +29,15 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontFamily: "Karla-Bold",
     fontWeight: "bold",
+  },
+
+  disabledBtnStyle: {
+    backgroundColor: COLORS.gray,
+    borderRadius: 5,
+    height: 50,
+    alignItems: "center",
+
+    justifyContent: "center",
   },
 });
 

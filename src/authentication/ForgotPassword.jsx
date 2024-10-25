@@ -71,7 +71,7 @@ const ForgotPassword = ({ navigation }) => {
             <BusyButton
               text={"RECOVER PASSWORD"}
               onPress={() => {
-                navigation.navigate("RecoverPassword");
+                navigation.navigate("VerifyPassword");
               }}
             />
           </ScrollView>

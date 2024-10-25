@@ -86,7 +86,12 @@ const CreateAccount = ({ navigation }) => {
               onchangeText={() => {}}
             />
             <View style={{ paddingTop: "30%" }} />
-            <BusyButton text={"CREATE YOUR ACCOUNT"} />
+            <BusyButton
+              onPress={() => {
+                navigation.navigate("TabNavigator");
+              }}
+              text={"CREATE YOUR ACCOUNT"}
+            />
             <View style={{ flexDirection: "row", paddingTop: 10 }}>
               <Text
                 style={{

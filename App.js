@@ -11,6 +11,8 @@ import { useFonts } from "expo-font";
 import Login from "./src/authentication/Login";
 import ForgotPassword from "./src/authentication/ForgotPassword";
 import RecoverPassword from "./src/authentication/RecoverPassword";
+import VerifyPassword from "./src/authentication/verifyPassword";
+import TabNavigator from "./src/home/TabNavigator";
 
 const stack = createStackNavigator();
 
@@ -64,6 +66,8 @@ const App = () => {
         <stack.Screen name="Login" component={Login} />
         <stack.Screen name="ForgotPassword" component={ForgotPassword} />
         <stack.Screen name="RecoverPassword" component={RecoverPassword} />
+        <stack.Screen name="VerifyPassword" component={VerifyPassword} />
+        <stack.Screen name="TabNavigator" component={TabNavigator} />
       </stack.Navigator>
     </NavigationContainer>
   );

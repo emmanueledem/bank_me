@@ -7,6 +7,7 @@ import {
   ScrollView,
   TextInput,
   TouchableOpacityBase,
+  Dimensions,
 } from "react-native";
 import React from "react";
 import ICONS from "../../constants/app_icons";
@@ -15,6 +16,8 @@ import COLORS from "../../constants/app_colors";
 import { TouchableOpacity } from "react-native";
 import InputField from "../../components/InputField";
 import BusyButton from "../../components/BusyButton";
+
+let screenHeight = Dimensions.get("window").height;
 
 const CreateAccount = ({ navigation }) => {
   return (
@@ -52,73 +55,70 @@ const CreateAccount = ({ navigation }) => {
             Open a BankMe account with a few details.
           </Text>
 
-          <ScrollView
-            contentContainerStyle={{
-              flexGrow: 1,
-              justifyContent: "flex-end",
-            }}
-            style={{ paddingTop: 30 }}
-          >
-            <Text style={styles.inputFieldTitle}>Full name</Text>
-            <InputField
-              keyboardType="text"
-              placeholder={"Joseph Kalu"}
-              onchangeText={() => {}}
-            />
-            <Text style={styles.inputFieldTitle}>Phone number</Text>
-            <InputField
-              keyboardType="number"
-              placeholder={"+ 234 808 762 1236"}
-              onchangeText={() => {}}
-            />
-            <Text style={styles.inputFieldTitle}>Password</Text>
-            <InputField
-              keyboardType=""
-              secureTextEntry={true}
-              placeholder={"********"}
-              onchangeText={() => {}}
-            />
-            <Text style={styles.inputFieldTitle}>Repeat password</Text>
-            <InputField
-              keyboardType=""
-              secureTextEntry={true}
-              placeholder={"********"}
-              onchangeText={() => {}}
-            />
-            <View style={{ paddingTop: "30%" }} />
-            <BusyButton
-              onPress={() => {
-                navigation.navigate("TabNavigator");
-              }}
-              text={"CREATE YOUR ACCOUNT"}
-            />
-            <View style={{ flexDirection: "row", paddingTop: 10 }}>
-              <Text
-                style={{
-                  color: COLORS.shinyBlack,
-                  fontSize: 15,
-                  fontWeight: "regular",
-                  fontFamily: "Karla-Regular",
-                }}
-              >
-                Do you already have a BankMe account?{" "}
-              </Text>
-              <TouchableOpacity
+          <ScrollView style={{ paddingTop: 30 }}>
+            <View style={{ height: screenHeight / 1.5 }}>
+              <Text style={styles.inputFieldTitle}>Full name</Text>
+              <InputField
+                keyboardType="text"
+                placeholder={"Joseph Kalu"}
+                onchangeText={() => {}}
+              />
+              <Text style={styles.inputFieldTitle}>Phone number</Text>
+              <InputField
+                keyboardType="number"
+                placeholder={"+ 234 808 762 1236"}
+                onchangeText={() => {}}
+              />
+              <Text style={styles.inputFieldTitle}>Password</Text>
+              <InputField
+                keyboardType=""
+                secureTextEntry={true}
+                placeholder={"********"}
+                onchangeText={() => {}}
+              />
+              <Text style={styles.inputFieldTitle}>Repeat password</Text>
+              <InputField
+                keyboardType=""
+                secureTextEntry={true}
+                placeholder={"********"}
+                onchangeText={() => {}}
+              />
+
+              <View style={{ paddingTop: "30%" }} />
+              <BusyButton
                 onPress={() => {
-                  navigation.navigate("Login");
+                  navigation.navigate("TabNavigator");
                 }}
-              >
+                text={"CREATE YOUR ACCOUNT"}
+              />
+              <View style={{ flexDirection: "row", paddingTop: 10 }}>
                 <Text
                   style={{
-                    color: COLORS.primary,
+                    color: COLORS.shinyBlack,
                     fontSize: 15,
                     fontWeight: "regular",
                     fontFamily: "Karla-Regular",
                   }}
                 >
-                  Sign in here
+                  Do you already have a BankMe account?{" "}
                 </Text>
-              </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => {
+                    navigation.navigate("Login");
+                  }}
+                >
+                  <Text
+                    style={{
+                      color: COLORS.primary,
+                      fontSize: 15,
+                      fontWeight: "regular",
+                      fontFamily: "Karla-Regular",
+                    }}
+                  >
+                    Sign in here
+                  </Text>
+                </TouchableOpacity>
+              </View>
             </View>
           </ScrollView>
         </View>

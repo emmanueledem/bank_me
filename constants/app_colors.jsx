@@ -6,9 +6,15 @@ const COLORS = {
   gray1: "#999999",
   gray2: "#666666",
   gray3: "#90A0C1",
+  gray4: "#E5E5E5",
+  gray5: "#5E5E5E",
+  gray5: "#C9C9C9",
   primaryColor: "#403C9A",
   secondary: "#00FF00",
   tertiary: "#0000FF",
+  lightBlue: "#85B7FF",
+  green: "#D5F6EE",
+  yellow: "#FFF1D1",
 };
 
 export default COLORS;

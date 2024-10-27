@@ -12,6 +12,7 @@ import COLORS from "../../constants/app_colors";
 import { SvgXml } from "react-native-svg";
 import ICONS from "../../constants/app_icons";
 import ActivityContainer from "./ActivityContainer";
+import { TouchableOpacity } from "react-native";
 let screenHeight = Dimensions.get("window").height;
 
 const bannerSlides = [
@@ -32,15 +33,17 @@ const bannerSlides = [
   },
 ];
 
-const Dashboard = () => {
+const Dashboard = ({ navigation }) => {
   return (
-    <SafeAreaView>
-      <View style={styles.bodyStyle}>
+    <SafeAreaView style={{ flex: 1 }}>
+      <>
         <View
           style={{
             flexDirection: "row",
             justifyContent: "space-between",
             alignItems: "center",
+            paddingHorizontal: 16,
+            paddingTop: 16,
           }}
         >
           <View>
@@ -59,34 +62,44 @@ const Dashboard = () => {
           </View>
         </View>
         <View style={{ paddingTop: 16 }} />
-        <View style={styles.bannerContainer}>
-          <Text style={styles.bannerTile}>Total Savings</Text>
-          <Text style={styles.bannerAmount}>N50,000.10</Text>
+        <View style={{ paddingHorizontal: 16 }}>
+          <View style={styles.bannerContainer}>
+            <Text style={styles.bannerTile}>Total Savings</Text>
+            <Text style={styles.bannerAmount}>N50,000.10</Text>
+          </View>
         </View>
+
         <View style={{ paddingTop: 16 }} />
         <View style={{ flexDirection: "row", alignSelf: "center" }}>
-          <View style={styles.addMoneyContainer}>
-            <View
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "space-between",
-              }}
-            >
-              <Image source={require("../../assets/images/addMoney.png")} />
-              <View style={{ paddingHorizontal: 8 }} />
-              <Text
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("SaveMoney");
+            }}
+          >
+            <View style={styles.addMoneyContainer}>
+              <View
                 style={{
-                  fontSize: 17,
-                  fontFamily: "Karla-Regular",
-                  fontWeight: "light",
-                  color: COLORS.gray5,
+                  flexDirection: "row",
+                  alignItems: "center",
+                  justifyContent: "space-between",
                 }}
               >
-                Add money
-              </Text>
+                <Image source={require("../../assets/images/addMoney.png")} />
+                <View style={{ paddingHorizontal: 8 }} />
+                <Text
+                  style={{
+                    fontSize: 17,
+                    fontFamily: "Karla-Regular",
+                    fontWeight: "light",
+                    color: COLORS.gray5,
+                  }}
+                >
+                  Add money
+                </Text>
+              </View>
             </View>
-          </View>
+          </TouchableOpacity>
+
           <View
             style={{
               paddingHorizontal: 10,
@@ -119,7 +132,7 @@ const Dashboard = () => {
         </View>
         <View style={{ paddingTop: 40 }} />
         <ScrollView keyboardShouldPersistTaps="handled">
-          <View style={{ height: screenHeight / 1.5 }}>
+          <View style={{ paddingHorizontal: 16 }}>
             <Text
               style={{
                 color: COLORS.shinyBlack,
@@ -158,17 +171,13 @@ const Dashboard = () => {
             />
           </View>
         </ScrollView>
-      </View>
+      </>
     </SafeAreaView>
   );
 };
 
 export default Dashboard;
 styles = StyleSheet.create({
-  bodyStyle: {
-    padding: 16,
-  },
-
   helloUser: {
     fontFamily: "Karla-Bold",
     fontSize: 25,
@@ -185,6 +194,7 @@ styles = StyleSheet.create({
     paddingVertical: 27,
     alignItems: "center",
     borderRadius: 8,
+
     backgroundColor: COLORS.primary,
     height: 180,
     justifyContent: "center",

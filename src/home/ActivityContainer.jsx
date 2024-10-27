@@ -46,7 +46,7 @@ const ActivityContainer = ({ text, image }) => {
         <View>
           <SvgXml
             xml={ICONS.arrowBack}
-            color={COLORS.shinyBlack}
+            fill={COLORS.yellow}
             width="20"
             height="20"
           />

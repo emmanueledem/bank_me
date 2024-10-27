@@ -13,6 +13,8 @@ import ForgotPassword from "./src/authentication/ForgotPassword";
 import RecoverPassword from "./src/authentication/RecoverPassword";
 import VerifyPassword from "./src/authentication/verifyPassword";
 import TabNavigator from "./src/home/TabNavigator";
+import WithdrawMoney from "./src/money/WithdrawMoney";
+import SaveMoney from "./src/money/SaveMoney";
 
 const stack = createStackNavigator();
 
@@ -68,6 +70,8 @@ const App = () => {
         <stack.Screen name="RecoverPassword" component={RecoverPassword} />
         <stack.Screen name="VerifyPassword" component={VerifyPassword} />
         <stack.Screen name="TabNavigator" component={TabNavigator} />
+        <stack.Screen name="WithdrawMoney" component={WithdrawMoney} />
+        <stack.Screen name="SaveMoney" component={SaveMoney} />
       </stack.Navigator>
     </NavigationContainer>
   );

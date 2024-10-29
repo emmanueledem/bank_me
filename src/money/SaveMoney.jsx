@@ -8,12 +8,18 @@ import COLORS from "../../constants/app_colors";
 import RNScreenKeyboard from "rn-screen-keyboard";
 import BusyButton from "../../components/BusyButton";
 let screenHeight = Dimensions.get("window").height;
+import numeral from "numeral";
 
 const SaveMoney = ({ navigation }) => {
   const [value, setValue] = useState("");
 
   const handleKeyPress = (data) => {
-    setValue(data);
+    formatValue(data);
+  };
+
+  const formatValue = (value) => {
+    const number = numeral(value).format("0,0");
+    setValue(number);
   };
 
   return (
@@ -114,28 +120,31 @@ const SaveMoney = ({ navigation }) => {
           footerStyle={{
             justifyContent: "space-around",
             alignItems: "center",
-            paddingLeft: 45,
+            paddingLeft: 60,
           }}
           Left={
             <Text
               style={{
                 backgroundColor: COLORS.white,
                 fontSize: 42,
-
                 paddingHorizontal: 5,
                 color: COLORS.shinyBlack,
                 fontFamily: "Karla-Regular",
                 fontWeight: "regular",
                 textAlign: "center",
               }}
-            >
-              .
-            </Text>
+            ></Text>
           } // Custom left footer button
           // Custom right footer button
         />
         <View style={{ paddingTop: screenHeight / 15 }} />
-        <BusyButton onPress={() => {}} text={"CONTINUE"} />
+        <BusyButton
+          isActive={value == "" ? true : false}
+          onPress={() => {
+            navigation.navigate("SaveMoneyDetails", { value });
+          }}
+          text={"CONTINUE"}
+        />
       </View>
     </SafeAreaView>
   );

@@ -8,6 +8,7 @@ const InputField = ({
   secureTextEntry,
   onchangeText,
   value,
+  editable = true,
 }) => {
   return (
     <View style={{ paddingBottom: 10 }}>
@@ -16,6 +17,7 @@ const InputField = ({
         placeholder={placeholder}
         secureTextEntry={secureTextEntry}
         keyboardType={keyboardType}
+        editable={editable}
         style={{
           height: 50,
           padding: 16,

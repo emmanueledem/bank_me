@@ -35,7 +35,7 @@ const bannerSlides = [
 
 const Dashboard = ({ navigation }) => {
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }}>
       <>
         <View
           style={{
@@ -105,33 +105,40 @@ const Dashboard = ({ navigation }) => {
               paddingHorizontal: 10,
             }}
           />
-          <View style={styles.withdrawContainer}>
-            <View
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "space-between",
-              }}
-            >
-              <Image
-                source={require("../../assets/images/withdrawMoney.png")}
-              />
-              <View style={{ paddingHorizontal: 8 }} />
-              <Text
+
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("WithdrawMoney");
+            }}
+          >
+            <View style={styles.withdrawContainer}>
+              <View
                 style={{
-                  fontSize: 17,
-                  fontFamily: "Karla-Regular",
-                  fontWeight: "light",
-                  color: COLORS.gray5,
+                  flexDirection: "row",
+                  alignItems: "center",
+                  justifyContent: "space-between",
                 }}
               >
-                Withdraw
-              </Text>
+                <Image
+                  source={require("../../assets/images/withdrawMoney.png")}
+                />
+                <View style={{ paddingHorizontal: 8 }} />
+                <Text
+                  style={{
+                    fontSize: 17,
+                    fontFamily: "Karla-Regular",
+                    fontWeight: "light",
+                    color: COLORS.gray5,
+                  }}
+                >
+                  Withdraw
+                </Text>
+              </View>
             </View>
-          </View>
+          </TouchableOpacity>
         </View>
         <View style={{ paddingTop: 40 }} />
-        <ScrollView keyboardShouldPersistTaps="handled">
+        <ScrollView>
           <View style={{ paddingHorizontal: 16 }}>
             <Text
               style={{

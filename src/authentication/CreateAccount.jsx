@@ -87,7 +87,7 @@ const CreateAccount = ({ navigation }) => {
               <View style={{ paddingTop: "30%" }} />
               <BusyButton
                 onPress={() => {
-                  navigation.navigate("TabNavigator");
+                  navigation.replace("TabNavigator");
                 }}
                 text={"CREATE YOUR ACCOUNT"}
               />

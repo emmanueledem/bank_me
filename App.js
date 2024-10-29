@@ -15,6 +15,9 @@ import VerifyPassword from "./src/authentication/verifyPassword";
 import TabNavigator from "./src/home/TabNavigator";
 import WithdrawMoney from "./src/money/WithdrawMoney";
 import SaveMoney from "./src/money/SaveMoney";
+import SaveMoneyDetails from "./src/money/SaveMoneyDetails";
+import TransactionSuccess from "./src/money/TransactionSuccess";
+import WithdrawMoneyDetails from "./src/money/WithdrawMoneyDetails";
 
 const stack = createStackNavigator();
 
@@ -72,6 +75,15 @@ const App = () => {
         <stack.Screen name="TabNavigator" component={TabNavigator} />
         <stack.Screen name="WithdrawMoney" component={WithdrawMoney} />
         <stack.Screen name="SaveMoney" component={SaveMoney} />
+        <stack.Screen name="SaveMoneyDetails" component={SaveMoneyDetails} />
+        <stack.Screen
+          name="WithdrawMoneyDetails"
+          component={WithdrawMoneyDetails}
+        />
+        <stack.Screen
+          name="TransactionSuccess"
+          component={TransactionSuccess}
+        />
       </stack.Navigator>
     </NavigationContainer>
   );

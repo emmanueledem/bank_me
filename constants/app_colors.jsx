@@ -14,6 +14,8 @@ const COLORS = {
   tertiary: "#0000FF",
   lightBlue: "#85B7FF",
   green: "#D5F6EE",
+  green1: "#16BE81",
+
   yellow: "#FFF1D1",
 };
 

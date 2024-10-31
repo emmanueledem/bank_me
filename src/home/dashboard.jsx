@@ -57,7 +57,14 @@ const Dashboard = ({ navigation }) => {
               />
             </View>
           </View>
-          <View>
+          <View style={{ flexDirection: "row", alignItems: "center" }}>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate("Notification");
+              }}
+            >
+              <SvgXml xml={ICONS.NotificationIcon} width="60" height="60" />
+            </TouchableOpacity>
             <Image source={require("../../assets/images/user_image.png")} />
           </View>
         </View>
@@ -172,10 +179,16 @@ const Dashboard = ({ navigation }) => {
               Get your money working for you
             </Text>
             <View style={{ paddingTop: 20 }} />
-            <ActivityContainer
-              text={"Invite your friends and get a bonus"}
-              image={require("../../assets/images/invite.png")}
-            />
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate("InviteFriend");
+              }}
+            >
+              <ActivityContainer
+                text={"Invite your friends and get a bonus"}
+                image={require("../../assets/images/invite.png")}
+              />
+            </TouchableOpacity>
           </View>
         </ScrollView>
       </>

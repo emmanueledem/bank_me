@@ -18,6 +18,8 @@ import SaveMoney from "./src/money/SaveMoney";
 import SaveMoneyDetails from "./src/money/SaveMoneyDetails";
 import TransactionSuccess from "./src/money/TransactionSuccess";
 import WithdrawMoneyDetails from "./src/money/WithdrawMoneyDetails";
+import InviteFriend from "./src/rewards/InviteFriend";
+import Notification from "./src/notifications/Notification";
 
 const stack = createStackNavigator();
 
@@ -84,6 +86,8 @@ const App = () => {
           name="TransactionSuccess"
           component={TransactionSuccess}
         />
+        <stack.Screen name="InviteFriend" component={InviteFriend} />
+        <stack.Screen name="Notification" component={Notification} />
       </stack.Navigator>
     </NavigationContainer>
   );

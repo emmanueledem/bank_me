@@ -10,33 +10,33 @@ import { TouchableOpacity } from "react-native";
 const Notification = ({ navigation }) => {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }}>
-      <View style={{ padding: 16, flex: 1 }}>
-        <View
-          style={{
-            flexDirection: "row",
-            marginBottom: 25,
-            alignItems: "center",
+      <View
+        style={{
+          flexDirection: "row",
+          marginTop: 16,
+          alignItems: "center",
+        }}
+      >
+        <TouchableOpacity
+          onPress={() => {
+            navigation.goBack();
           }}
         >
-          <TouchableOpacity
-            onPress={() => {
-              navigation.goBack();
-            }}
-          >
-            <SvgXml xml={ICONS.ArrowBackRight} width="50" height="40" />
-          </TouchableOpacity>
+          <SvgXml xml={ICONS.ArrowBackRight} width="50" height="40" />
+        </TouchableOpacity>
 
-          <Text
-            style={{
-              fontFamily: "Karla-Bold",
-              fontWeight: "bold",
-              fontSize: 17,
-              color: COLORS.shinyBlack,
-            }}
-          >
-            Notification
-          </Text>
-        </View>
+        <Text
+          style={{
+            fontFamily: "Karla-Bold",
+            fontWeight: "bold",
+            fontSize: 17,
+            color: COLORS.shinyBlack,
+          }}
+        >
+          Notification
+        </Text>
+      </View>
+      <View style={{ padding: 16, flex: 1 }}>
         <ScrollView showsVerticalScrollIndicator={false}>
           <Text
             style={{

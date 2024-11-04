@@ -24,7 +24,12 @@ const WelcomeBack = ({ navigation }) => {
           text={"CREATE YOUR FREE ACCOUNT"}
         />
 
-        <SecondaryButton onPress={() => {}} text={"LOG INTO YOUR ACCOUNT"} />
+        <SecondaryButton
+          onPress={() => {
+            navigation.navigate("Login");
+          }}
+          text={"LOG INTO YOUR ACCOUNT"}
+        />
       </View>
     </SafeAreaView>
   );

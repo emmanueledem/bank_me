@@ -5,7 +5,7 @@ import COLORS from "../constants/app_colors";
 
 const SecondaryButton = ({ text, onPress, isActive = false }) => {
   return (
-    <TouchableOpacity style={styles.btnStyle}>
+    <TouchableOpacity onPress={onPress} style={styles.btnStyle}>
       <Text style={styles.btnTexStyle}>{text}</Text>
     </TouchableOpacity>
   );

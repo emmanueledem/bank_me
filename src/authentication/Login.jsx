@@ -8,7 +8,7 @@ import {
   TextInput,
   TouchableOpacityBase,
 } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ICONS from "../../constants/app_icons";
 import { SvgXml } from "react-native-svg";
 import COLORS from "../../constants/app_colors";
@@ -17,6 +17,44 @@ import InputField from "../../components/InputField";
 import BusyButton from "../../components/BusyButton";
 
 const Login = ({ navigation }) => {
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState({});
+  const [isFormValid, setIsFormValid] = useState(false);
+
+  useEffect(() => {
+    // Trigger form validation when name,
+    // email, or password changes
+    validateForm();
+  }, [phoneNumber, password]);
+
+  const validateForm = () => {
+    let errors = {};
+
+    //   validate phone number field
+    if (!phoneNumber) {
+      errors.phoneNumber = "phone Number is required.";
+    }
+
+    // Validate password field
+    if (!password) {
+      errors.password = "Password is required.";
+    } else if (password.length < 6) {
+      errors.password = "Password must be at least 6 characters.";
+    }
+
+    // Set the errors and update form validityv
+    setErrors(errors);
+    setIsFormValid(Object.keys(errors).length === 0);
+    return Object.keys(errors).length === 0;
+  };
+
+  const handleSubmit = () => {
+    if (validateForm()) {
+      navigation.navigate("Login");
+      setErrors({});
+    }
+  };
   return (
     <SafeAreaView>
       <View style={styles.bodyStyle}>
@@ -60,19 +98,31 @@ const Login = ({ navigation }) => {
             }}
             style={{ paddingTop: 58 }}
           >
-            <Text style={styles.inputFieldTitle}>Phone number</Text>
-            <InputField
-              keyboardType="number"
-              placeholder={"+ 234 808 762 1236"}
-              onchangeText={() => {}}
-            />
-            <Text style={styles.inputFieldTitle}>Password</Text>
-            <InputField
-              keyboardType=""
-              secureTextEntry={true}
-              placeholder={"********"}
-              onchangeText={() => {}}
-            />
+            <View>
+              <Text style={styles.inputFieldTitle}>Phone number</Text>
+              <InputField
+                keyboardType="number"
+                placeholder={"+ 234 808 762 1236"}
+                onchangeText={setPhoneNumber}
+              />
+
+              {errors.phoneNumber ? (
+                <Text style={styles.error}>{errors.phoneNumber}</Text>
+              ) : null}
+            </View>
+
+            <View>
+              <Text style={styles.inputFieldTitle}>Password</Text>
+              <InputField
+                keyboardType=""
+                secureTextEntry={true}
+                placeholder={"********"}
+                onchangeText={setPassword}
+              />
+              {errors.password ? (
+                <Text style={styles.error}>{errors.password}</Text>
+              ) : null}
+            </View>
             <Text
               style={{
                 color: COLORS.shinyBlack,
@@ -102,7 +152,13 @@ const Login = ({ navigation }) => {
             </TouchableOpacity>
 
             <View style={{ paddingTop: "30%" }} />
-            <BusyButton text={"CREATE YOUR ACCOUNT"} />
+            <BusyButton
+              isActive={!isFormValid}
+              onPress={() => {
+                navigation.replace("TabNavigator");
+              }}
+              text={"LOGIN"}
+            />
             <View style={{ flexDirection: "row", paddingTop: 10 }}>
               <Text
                 style={{
@@ -151,5 +207,11 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
     fontFamily: "Karla-Regular",
     color: COLORS.shinyBlack,
+  },
+  error: {
+    color: "red",
+    fontSize: 15,
+    fontFamily: "Karla-Regular",
+    marginBottom: 12,
   },
 });
